@@ -1,0 +1,36 @@
+body {
+    background-color: aquamarine;    
+}
+
+#block {
+    width: 350px;
+    height: 500px;
+    background-color: white;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin:0 auto;
+    top: calc(50% - 250px);
+    padding: 20px;
+    overflow: scroll;
+}
+
+ul li {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    background-color: yellow;
+    padding-left: 7px;
+}
+
+.background {
+    background: green;
+    color: white;
+}
+
+
+.btnRemove:hover {
+    background-color: orange;
+    border: 2px solid black;
+    color: black;
+}
