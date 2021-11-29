@@ -16,14 +16,28 @@ function createButton() {
     return btnRemove;
 }
 
+let regExp = /^[\d\w\s]{2,15}$/i;
+
+input.addEventListener('change', function() {
+    if (input.value.match(regExp)) {
+        input.classList.add('valid');
+        input.classList.remove('invalid');
+        input.classList.remove('empty');
+    } else if (!input.value.match(regExp)) {
+        input.classList.add('invalid');
+        input.classList.remove('valid');
+        input.classList.remove('empty');
+    } 
+})
+
 btn.addEventListener('click', function() {
-    if (input.value) {
+    if (input.value.match(regExp)) {
         ul.appendChild(createLi(input.value)).appendChild(createButton());
         input.value = '';
-        input.style.backgroundColor = 'transparent';
-    } else {
-        input.style.backgroundColor = 'red';
-    };
+        input.classList.add('empty');
+    } else if (input.value === '') {
+        input.classList.add('invalid');
+    }
 });
 
 ul.addEventListener('click', function(event) {
@@ -33,19 +47,3 @@ ul.addEventListener('click', function(event) {
         event.target.parentElement.remove();
     }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

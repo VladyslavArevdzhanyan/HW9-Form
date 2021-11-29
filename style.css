@@ -34,3 +34,19 @@ ul li {
     border: 2px solid black;
     color: black;
 }
+
+.valid {
+    border: 2px solid green;
+    color: green;
+    box-shadow: none;
+}
+
+.invalid {
+    border: 2px solid red;
+    color: red;
+    box-shadow: none;
+}
+
+.empty {
+    border: 2px solid black;
+}
