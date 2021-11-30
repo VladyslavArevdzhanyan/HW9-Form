@@ -1,25 +1,24 @@
 let input = document.getElementById('inputText');
 let ul = document.getElementById('list');
 let btn = document.getElementById('applyBtn');
-let block = document.getElementById('block');
+let form = document.getElementById('form');
 
-function createLi(text) {
-    var li = document.createElement('li');
+function createLiAndButton(text) {
+    let li = document.createElement('li');
     li.innerText = text;
-    return li;
-}
-
-function createButton() {
     let btnRemove = document.createElement('button');
     btnRemove.innerText = 'Удалить';
     btnRemove.classList.add('btnRemove');
-    return btnRemove;
-}
+    li.appendChild(btnRemove);
+    return li;
+};
 
-let regExp = /^[\d\w\s]{2,15}$/i;
+let regExp = /^[\w\s]{2,15}$/;
 
 input.addEventListener('change', function() {
-    if (input.value.match(regExp)) {
+    if (input.value.length === 0) {
+        input.classList.add('empty');
+    } else if (input.value.match(regExp)) {
         input.classList.add('valid');
         input.classList.remove('invalid');
         input.classList.remove('empty');
@@ -28,15 +27,14 @@ input.addEventListener('change', function() {
         input.classList.remove('valid');
         input.classList.remove('empty');
     } 
-})
+});
 
-btn.addEventListener('click', function() {
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
     if (input.value.match(regExp)) {
-        ul.appendChild(createLi(input.value)).appendChild(createButton());
+        ul.appendChild(createLiAndButton(input.value));
         input.value = '';
         input.classList.add('empty');
-    } else if (input.value === '') {
-        input.classList.add('invalid');
     }
 });
 
